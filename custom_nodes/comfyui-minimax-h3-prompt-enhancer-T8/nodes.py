@@ -627,16 +627,28 @@ def _validate_inputs(
     if task_type == "I2VA":
         if first_frame is None:
             raise PromptEnhancerError("I2VA requires first_frame.")
-        if last_frame is not None or reference_image_values or reference_video_values:
-            raise PromptEnhancerError("I2VA accepts only first_frame.")
+        ignored = []
+        if last_frame is not None:
+            ignored.append("last_frame")
+        if reference_image_values:
+            ignored.append(f"{len(reference_image_values)} reference image(s)")
+        if reference_video_values:
+            ignored.append(f"{len(reference_video_values)} reference video(s)")
+        if ignored:
+            print(f"[MiniMaxH3PromptEnhancer] I2VA ignores unrelated media: {', '.join(ignored)}")
         _image_count(first_frame)
         return [{"kind": "image", "label": "<Picture 1>", "value": _image_at(first_frame, 0)}]
 
     if task_type == "FL2VA":
         if first_frame is None or last_frame is None:
             raise PromptEnhancerError("FL2VA requires both first_frame and last_frame.")
-        if reference_image_values or reference_video_values:
-            raise PromptEnhancerError("FL2VA accepts first_frame and last_frame, not Ref2VA media inputs.")
+        ignored = []
+        if reference_image_values:
+            ignored.append(f"{len(reference_image_values)} reference image(s)")
+        if reference_video_values:
+            ignored.append(f"{len(reference_video_values)} reference video(s)")
+        if ignored:
+            print(f"[MiniMaxH3PromptEnhancer] FL2VA ignores unrelated media: {', '.join(ignored)}")
         _image_count(first_frame)
         _image_count(last_frame)
         return [
@@ -647,18 +659,39 @@ def _validate_inputs(
     if task_type == "L2VA":
         if last_frame is None:
             raise PromptEnhancerError("L2VA requires last_frame.")
-        if first_frame is not None or reference_image_values or reference_video_values:
-            raise PromptEnhancerError("L2VA accepts only last_frame.")
+        ignored = []
+        if first_frame is not None:
+            ignored.append("first_frame")
+        if reference_image_values:
+            ignored.append(f"{len(reference_image_values)} reference image(s)")
+        if reference_video_values:
+            ignored.append(f"{len(reference_video_values)} reference video(s)")
+        if ignored:
+            print(f"[MiniMaxH3PromptEnhancer] L2VA ignores unrelated media: {', '.join(ignored)}")
         _image_count(last_frame)
         return [{"kind": "image", "label": "<Picture 1>", "value": _image_at(last_frame, 0)}]
 
+    # Ref2VA: prefer explicit reference media. If none are connected but first_frame/last_frame
+    # are present, promote them to reference images so a universal workflow keeps running.
     ignored_frames = []
     if first_frame is not None:
         ignored_frames.append("first_frame")
     if last_frame is not None:
         ignored_frames.append("last_frame")
     if ignored_frames:
-        print(f"[MiniMaxH3PromptEnhancer] Ref2VA ignores frame inputs: {', '.join(ignored_frames)}")
+        if not reference_image_values and not reference_video_values:
+            print(f"[MiniMaxH3PromptEnhancer] Ref2VA promotes frame inputs to references: {', '.join(ignored_frames)}")
+            if first_frame is not None:
+                reference_images = {"reference_image_0": first_frame}
+                reference_image_values = _ordered_values(reference_images)
+            if last_frame is not None and first_frame is not None:
+                reference_images["reference_image_1"] = last_frame
+                reference_image_values = _ordered_values(reference_images)
+            elif last_frame is not None:
+                reference_images = {"reference_image_0": last_frame}
+                reference_image_values = _ordered_values(reference_images)
+        else:
+            print(f"[MiniMaxH3PromptEnhancer] Ref2VA ignores frame inputs: {', '.join(ignored_frames)}")
         first_frame = None
         last_frame = None
     image_count = sum(_image_count(image) for image in reference_image_values)

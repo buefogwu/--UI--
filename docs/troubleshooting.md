@@ -99,3 +99,23 @@
   6. enabled, use_background_music, use_ambient_noise
 - 若旧工作流仍报验证错误，请重新加载主用 ref5 工作流，或清空 enhancer 节点的 `widgets_values` 后保存。
 - 同时清除浏览器缓存并强制刷新 `Ctrl/Cmd + Shift + R`。
+
+## 12. Ref2VA 仍报 "requires at least one reference image or reference video"
+
+**原因**：参考图实际连到了 `first_frame`，而没有连到 `reference_images`。
+
+**解决**：
+- 把参考图连到 `reference_images.reference_image_0`（以及后续自动展开的 reference_image_1/2/3/4）。
+- 或者升级到 2026-08-12 后的节点版本：当 Ref2VA 未连接 `reference_images` 但连了 `first_frame` 时，节点会自动把 `first_frame` 提升为参考图，兼容旧连线。
+
+## 13. 同一个工作流想同时支持 T2VA/I2VA/FL2VA/L2VA/Ref2VA
+
+**原因**：不同模式对输入要求不同，旧版本会严格报错（如 I2VA 不能连 reference_images）。
+
+**解决**：
+- 2026-08-12 后节点改为「自动忽略当前模式不需要的媒体输入」并打印警告，不再强制断线。
+- 推荐在主用 ref5 工作流里同时连好：
+  - `first_frame`：I2VA / FL2VA 用
+  - `last_frame`：FL2VA / L2VA 用
+  - `reference_images`：Ref2VA 用
+- 切换 `task_type` 时无需手动拔线，节点会按模式取所需输入。

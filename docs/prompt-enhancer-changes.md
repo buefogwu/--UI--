@@ -118,3 +118,20 @@ systemctl --user restart comfyui
 
 - 2026-08-12 修改 `_validate_inputs`：Ref2VA 遇到 `first_frame`/`last_frame` 时打印警告并忽略，不再强制要求用户手动断线。
 - 与 T2VA 自动忽略参考媒体的处理保持一致。
+
+### 12. 全模式通用输入容错
+
+- 2026-08-12 进一步放宽 `_validate_inputs`：
+  - **I2VA**：仍需要 `first_frame`；若误连 `last_frame` / `reference_images` / `reference_videos`，自动忽略并打印警告，不再报错。
+  - **FL2VA**：仍需要 `first_frame` + `last_frame`；误连参考图/视频时自动忽略。
+  - **L2VA**：仍需要 `last_frame`；误连 `first_frame` / 参考图/视频时自动忽略。
+  - **Ref2VA**：未连参考媒体但连了 `first_frame`/`last_frame` 时，自动把它们提升为参考图，避免 "requires reference image" 错误。
+- 这样一份工作流可同时连好首帧、尾帧、参考图，切换 `task_type` 时无需反复拔线。
+
+### 13. 主用 ref5 工作流连线更新
+
+- 将 5 张参考图（LoadImage 节点 30-34）同时连到：
+  - `MiniMaxH3AudioConditioningT8` 的 `ref_images.ref_image_0~3`（保持原有逻辑）
+  - `MiniMaxH3PromptEnhancerT8` 的 `reference_images.reference_image_0~4`
+- 将第 5 张参考图（节点 34）同时连到 `MiniMaxH3PromptEnhancerT8.last_frame`，使 FL2VA / L2VA 可用。
+- `first_frame` 保持由节点 30 连接。
