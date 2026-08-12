@@ -119,3 +119,16 @@
   - `last_frame`：FL2VA / L2VA 用
   - `reference_images`：Ref2VA 用
 - 切换 `task_type` 时无需手动拔线，节点会按模式取所需输入。
+
+
+## 14. 添加可选视频/音频输入后报错 "invalid connection" 或 "Is a directory"
+
+**原因**：
+- `MiniMaxH3AudioConditioningT8` 的 `ref_videos.ref_video_0` 输入类型是 `IMAGE`，不是 `VIDEO`，不能直接接 `LoadVideo`。
+- 空的 `LoadVideo` 节点会返回 `/home/fogai/ComfyUI/input` 目录路径，PromptEnhancer 尝试作为视频打开时报 `av.error.IsADirectoryError`。
+- 同理，空的 `LoadAudio` 也可能传入无效路径。
+
+**解决**：
+- 在测试工作流 `（测试）minimax_h3_ref5_5img_novram_safe.json` 中，已将 `LoadVideo`/`LoadAudio` 节点默认断开连接。
+- 需要使用时，先上传文件，再手动连接到 PromptEnhancer 的对应输入。
+- `AudioConditioning.ref_videos` 若需要视频参考，请先通过抽帧/图像节点提供 `IMAGE` 类型输入。

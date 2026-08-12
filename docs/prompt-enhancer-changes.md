@@ -135,3 +135,14 @@ systemctl --user restart comfyui
   - `MiniMaxH3PromptEnhancerT8` 的 `reference_images.reference_image_0~4`
 - 将第 5 张参考图（节点 34）同时连到 `MiniMaxH3PromptEnhancerT8.last_frame`，使 FL2VA / L2VA 可用。
 - `first_frame` 保持由节点 30 连接。
+
+
+### 14. 可选参考视频/音频输入的连线规范
+
+- `LoadVideo`（节点 38）不能直接连 `AudioConditioning.ref_videos`，因为后者槽类型为 `IMAGE`。
+- 空的 `LoadVideo`/`LoadAudio` 会传入目录路径或空路径，导致运行时错误。
+- 测试工作流中已将这两个节点默认悬空，用户上传文件后按需手动连接。
+- 推荐做法：
+  - 参考视频 → PromptEnhancer.reference_videos（仅当确实需要参考视频时）
+  - 参考音频 → AudioConditioning.ref_audios（上传音频后连接）
+  - 视频抽帧/关键帧 → AudioConditioning.ref_videos（类型为 IMAGE）
