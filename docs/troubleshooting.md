@@ -132,3 +132,28 @@
 - 在测试工作流 `（测试）minimax_h3_ref5_5img_novram_safe.json` 中，已将 `LoadVideo`/`LoadAudio` 节点默认断开连接。
 - 需要使用时，先上传文件，再手动连接到 PromptEnhancer 的对应输入。
 - `AudioConditioning.ref_videos` 若需要视频参考，请先通过抽帧/图像节点提供 `IMAGE` 类型输入。
+
+
+## 15. 五模式（T2VA/I2VA/FL2VA/L2VA/Ref2VA）自动化测试通过
+
+**时间**：2026-08-13 05:01
+**测试工作流**：`workflows/（测试）minimax_h3_ref5_5img_novram_safe.json`
+**测试配置**：
+- 模型：`minimax_h3_fl2va_pruned_int8_convrot.safetensors` + Turbo 4步 LoRA
+- 分辨率：1152×640，长度 56 帧（约 2 秒 @ 24fps）
+- 参数：`--novram --use-sage-attention`
+- 测试图片：`111.jpg`
+
+**结果**：
+| 模式 | 状态 | 输出文件 |
+|------|------|----------|
+| T2VA | SUCCESS | REF5_00098-audio.mp4 |
+| I2VA | SUCCESS | REF5_00099-audio.mp4 |
+| FL2VA | SUCCESS | REF5_00100-audio.mp4 |
+| L2VA | SUCCESS | REF5_00101-audio.mp4 |
+| Ref2VA | SUCCESS | REF5_00102-audio.mp4 |
+
+**说明**：
+- AudioConditioning 节点已设置合理的默认 `widgets_values`，不再使用占位字符串。
+- 切换 PromptEnhancer 的 `task_type` 时，AudioConditioning 的 `task_type` 保持 `auto` 即可自动跟随。
+- 测试脚本位于 `/tmp/run_h3_modes.py`（服务器本地）。

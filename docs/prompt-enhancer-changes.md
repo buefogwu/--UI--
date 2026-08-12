@@ -146,3 +146,19 @@ systemctl --user restart comfyui
   - 参考视频 → PromptEnhancer.reference_videos（仅当确实需要参考视频时）
   - 参考音频 → AudioConditioning.ref_audios（上传音频后连接）
   - 视频抽帧/关键帧 → AudioConditioning.ref_videos（类型为 IMAGE）
+
+
+### 15. 五模式自动化测试与 AudioConditioning 默认值修复
+
+- 2026-08-13 通过 `/tmp/run_h3_modes.py` 自动跑通 T2VA / I2VA / FL2VA / L2VA / Ref2VA。
+- 修复 AudioConditioning `widgets_values` 中的占位值：
+  - `width=1152`, `height=640`, `length=56`
+  - `task_type='auto'`（跟随 PromptEnhancer）
+  - `audio_mode='native'`
+  - `audio_denoise_strength=0.35`
+  - `add_source_as_reference=False`
+  - `prompt_primary_audio_ordinal=0`
+  - `strict_prompt_tags=False`
+  - `ref_image_size='match'`
+  - `reference_video_policy='official_2_to_15s'`
+- 这些默认值让工作流加载后即可直接切换模式运行，无需每次手动修正 AudioConditioning。

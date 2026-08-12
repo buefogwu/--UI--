@@ -600,8 +600,8 @@ def _validate_inputs(
         raise PromptEnhancerError(f"Unsupported creative_preset: {creative_preset}")
     if prompt_mode == "参考模板融合" and not str(reference_template or "").strip():
         raise PromptEnhancerError("reference_template is required when prompt_mode is 参考模板融合.")
-    if not 4 <= int(duration_seconds) <= 15:
-        raise PromptEnhancerError("duration_seconds must be between 4 and 15.")
+    if not 2 <= int(duration_seconds) <= 15:
+        raise PromptEnhancerError("duration_seconds must be between 2 and 15.")
     if description_word_target != 0 and not 80 <= int(description_word_target) <= 1000:
         raise PromptEnhancerError("description_word_target must be 0 (auto) or between 80 and 1000.")
 
@@ -1374,7 +1374,7 @@ class MiniMaxH3PromptEnhancer(io.ComfyNode):
                     options=list(TASK_TYPE_LABELS.values()),
                     default=TASK_TYPE_LABELS["T2VA"],
                 ),
-                io.Int.Input("duration_seconds", display_name="目标时长（秒）", default=5, min=4, max=15, step=1),
+                io.Int.Input("duration_seconds", display_name="目标时长（秒）", default=5, min=2, max=15, step=1),
                 io.Combo.Input(
                     "shot_count",
                     display_name="镜头数量",
