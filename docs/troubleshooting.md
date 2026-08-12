@@ -76,3 +76,11 @@
 5. 重新加载主用 ref5 工作流，检查 API 模式是否显示为 "OpenAI兼容接口（备用）"。
 
 **注意**：无论 UI 显示什么选项，`execute()` 内都会强制 `api_mode = OPENAI_API_MODE`，实际请求始终走 OpenAI 兼容接口。
+
+## 10. Ref2VA 报 "Ref2VA uses reference_images/reference_videos, not first_frame/last_frame"
+
+**原因**：切换到 Ref2VA 时，enhancer 节点仍连着 `first_frame`/`last_frame`（从 I2VA/FL2VA 模式带过来的）。
+
+**解决**：
+- 已在 2026-08-12 将校验改为自动忽略 `first_frame`/`last_frame` 并打印警告，不再报错。
+- 如需真正使用参考图/视频，请将参考素材连到 `reference_images` / `reference_videos` 输入。

@@ -109,3 +109,8 @@ systemctl --user restart comfyui
 - 2026-08-12 将 `API_MODES` 顺序从 `[Seedance, AI工坊, OpenAI]` 改为 `[OpenAI, Seedance, AI工坊]`。
 - 目的是：当浏览器缓存或旧 `widgets_values` 导致错位时，默认显示 OpenAI 兼容接口而非 "贞贞平价小屋"。
 - `execute()` 内部仍强制使用 `OPENAI_API_MODE`，不受 UI 显示影响。
+
+### 11. Ref2VA 自动忽略首帧/尾帧输入
+
+- 2026-08-12 修改 `_validate_inputs`：Ref2VA 遇到 `first_frame`/`last_frame` 时打印警告并忽略，不再强制要求用户手动断线。
+- 与 T2VA 自动忽略参考媒体的处理保持一致。

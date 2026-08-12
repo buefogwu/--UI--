@@ -652,8 +652,15 @@ def _validate_inputs(
         _image_count(last_frame)
         return [{"kind": "image", "label": "<Picture 1>", "value": _image_at(last_frame, 0)}]
 
-    if first_frame is not None or last_frame is not None:
-        raise PromptEnhancerError("Ref2VA uses reference_images/reference_videos, not first_frame/last_frame.")
+    ignored_frames = []
+    if first_frame is not None:
+        ignored_frames.append("first_frame")
+    if last_frame is not None:
+        ignored_frames.append("last_frame")
+    if ignored_frames:
+        print(f"[MiniMaxH3PromptEnhancer] Ref2VA ignores frame inputs: {', '.join(ignored_frames)}")
+        first_frame = None
+        last_frame = None
     image_count = sum(_image_count(image) for image in reference_image_values)
     if image_count > 9:
         raise PromptEnhancerError("Ref2VA supports at most 9 reference images, including IMAGE batches.")
