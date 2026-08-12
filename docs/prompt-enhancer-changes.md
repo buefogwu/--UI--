@@ -47,40 +47,44 @@
 
 OpenAI 兼容端点连接超时从 `(20, 300)` 改为 `(60, 300)`，并增加 3 次指数退避重试。
 
-### 8. Schema 与 execute 参数顺序对齐
+### 8. Schema 与前端序列化顺序对齐
 
-2026-08-12 修复 `define_schema()` 中输入定义顺序与 `execute()` 参数顺序不一致的问题，避免 `widgets_values` 清空后默认值错位（表现为 API Key 为空、模型 ID 变成随机数）。
+2026-08-12 修复 `define_schema()` 中 widget 顺序与前端 `SERIALIZED_WIDGET_NAMES` 序列化数组不一致的问题，彻底解决 `widgets_values` 错位导致的验证错误（如 `description_word_target`、`case_template`、`rewrite_mode` 类型不匹配）。
 
-最终一致的参数顺序：
+**根因**：前端 `minimax_h3_prompt_enhancer.js` 的 `onSerialize` 强制按固定数组保存 `widgets_values`，但后端 schema 的 widget 顺序不同。ComfyUI 加载时按后端自然顺序（`input_order`）解析 `widgets_values`，顺序不一致就导致每个 widget 拿到错误类型的值。
+
+**最终一致的 widget 顺序（与 `SERIALIZED_WIDGET_NAMES` 完全一致）**：
 
 1. prompt
 2. task_type
 3. duration_seconds
-4. rewrite_mode
-5. description_word_target
-6. first_frame
-7. last_frame
-8. reference_images
-9. reference_videos
-10. reference_context
-11. constraints
-12. api_key
-13. output_language
-14. prompt_mode
-15. official_skill_profile
-16. creative_preset
-17. reference_template
-18. api_mode
+4. shot_count
+5. rewrite_mode
+6. description_word_target
+7. output_language
+8. prompt_mode
+9. official_skill_profile
+10. creative_preset
+11. case_template
+12. api_mode
+13. ai_workshop_model
+14. custom_model
+15. reference_context
+16. constraints
+17. api_key
+18. reference_template
 19. openai_base_url
 20. openai_video_urls
 21. seed
-22. shot_count
-23. ai_workshop_model
-24. custom_model
-25. case_template
-26. enabled
-27. use_background_music
-28. use_ambient_noise
+22. control_after_generate（seed 的联动控件）
+23. enabled
+24. use_background_music
+25. use_ambient_noise
+
+**实现细节**：
+- 将 `enabled`、`use_background_music`、`use_ambient_noise` 改为 `optional=True`，使其进入 optional 分组并排在 `seed` 之后。
+- 前端 `SERIALIZED_WIDGET_NAMES` 增加 `"enabled"`、`"use_background_music"`、`"use_ambient_noise"` 三项。
+- 主用工作流 `widgets_values` 同步补齐为 25 项，最后三项为 `True, True, True`。
 
 ## 源码文件
 

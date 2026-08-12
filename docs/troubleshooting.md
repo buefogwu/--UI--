@@ -84,3 +84,18 @@
 **解决**：
 - 已在 2026-08-12 将校验改为自动忽略 `first_frame`/`last_frame` 并打印警告，不再报错。
 - 如需真正使用参考图/视频，请将参考素材连到 `reference_images` / `reference_videos` 输入。
+
+## 11. "检测到错误 / validation errors"（description_word_target / case_template / rewrite_mode 等）
+
+**根因**：后端 schema 的 widget 顺序与前端的 `SERIALIZED_WIDGET_NAMES` 序列化数组不一致。前端保存的 `widgets_values` 是固定顺序，但 ComfyUI 加载时按后端 `input_order` 解析，顺序错位导致 widget 拿到错误类型的值。
+
+**彻底解决**：
+- 2026-08-12 已统一顺序：
+  1. prompt, task_type, duration_seconds, shot_count, rewrite_mode, description_word_target
+  2. output_language, prompt_mode, official_skill_profile, creative_preset, case_template
+  3. api_mode, ai_workshop_model, custom_model
+  4. reference_context, constraints, api_key, reference_template
+  5. openai_base_url, openai_video_urls, seed, control_after_generate
+  6. enabled, use_background_music, use_ambient_noise
+- 若旧工作流仍报验证错误，请重新加载主用 ref5 工作流，或清空 enhancer 节点的 `widgets_values` 后保存。
+- 同时清除浏览器缓存并强制刷新 `Ctrl/Cmd + Shift + R`。
