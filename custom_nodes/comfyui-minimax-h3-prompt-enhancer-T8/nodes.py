@@ -40,6 +40,10 @@ CUSTOM_MODEL_OPTION = "Custom（自定义）"
 AI_WORKSHOP_MODEL_OPTIONS = [AI_WORKSHOP_DEFAULT_MODEL, CUSTOM_MODEL_OPTION]
 MAX_FILE_BYTES = 50 * 1024 * 1024
 REQUEST_TIMEOUT = (60, 300)
+# OpenAI-compatible endpoints send media inline as base64, so the initial
+# connection/write phase can be much slower than Seedance (which uploads media
+# separately). Use a longer connect timeout to avoid "write operation timed out".
+OPENAI_COMPATIBLE_REQUEST_TIMEOUT = (180, 300)
 SEEDANCE_CHAT_RETRY_DELAYS = (0.5, 1.0)
 OPENAI_CHAT_RETRY_DELAYS = (1.0, 2.0, 4.0)
 SEEDANCE_CHAT_RETRYABLE_STATUS_CODES = frozenset({502, 503, 504})
@@ -1096,7 +1100,9 @@ def _request_completion(
                     "Content-Type": "application/json",
                 },
                 json=payload,
-                timeout=REQUEST_TIMEOUT,
+                timeout=OPENAI_COMPATIBLE_REQUEST_TIMEOUT
+                if not _is_seedance_chat_endpoint(chat_url)
+                else REQUEST_TIMEOUT,
             )
         except requests.RequestException as error:
             can_retry = _is_retryable_seedance_network_error(error)

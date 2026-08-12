@@ -97,3 +97,9 @@ git checkout <commit-hash> -- custom_nodes/comfyui-minimax-h3-prompt-enhancer-T8
 cp custom_nodes/comfyui-minimax-h3-prompt-enhancer-T8/nodes.py /home/fogai/ComfyUI/custom_nodes/comfyui-minimax-h3-prompt-enhancer-T8/
 systemctl --user restart comfyui
 ```
+
+### 9. OpenAI 兼容模式写入超时修复
+
+- 2026-08-12 新增 `OPENAI_COMPATIBLE_REQUEST_TIMEOUT = (180, 300)`。
+- OpenAI 兼容端点（内联 base64 图片）使用 180 秒连接超时，替代默认 60 秒。
+- Seedance 端点（单独上传媒体）保持 60 秒不变。

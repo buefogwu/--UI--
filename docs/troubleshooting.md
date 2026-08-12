@@ -54,3 +54,12 @@
 1. 关闭所有 ComfyUI 标签页
 2. 清浏览器缓存
 3. 重新打开
+
+## 8. "ConnectionError: The write operation timed out" / "Fast retry was exhausted"
+
+**原因**：OpenAI 兼容模式将首帧图/参考图以内联 base64 发送，Payload 大，连接写入超时。
+
+**解决**：
+- 已在 2026-08-12 将 OpenAI 兼容端点的连接超时从 60 秒提高到 180 秒
+- 如仍超时，检查网络稳定性或进一步降低首帧图分辨率/文件大小
+- 避免同时发送过多参考图
