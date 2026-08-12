@@ -5,7 +5,11 @@ set -e
 REPO_DIR="/home/fogai/ComfyUI-Recovery-Project"
 COMFY_DIR="/home/fogai/ComfyUI"
 
-MSG="\${1:-sync: \$(date +%Y-%m-%d %H:%M:%S)}"
+if [ -z "$1" ]; then
+    MSG="sync: $(date +"%Y-%m-%d %H:%M:%S")"
+else
+    MSG="$1"
+fi
 
 mkdir -p "$REPO_DIR/workflows" "$REPO_DIR/custom_nodes/comfyui-minimax-h3-prompt-enhancer-T8"
 

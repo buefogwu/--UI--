@@ -89,7 +89,7 @@ SHOT_COUNT_OPTIONS = [AUTO_SHOT_COUNT] + [str(count) for count in range(1, 21)]
 SEEDANCE_API_MODE = "贞贞平价小屋（推荐）"
 AI_WORKSHOP_API_MODE = "贞贞的AI工坊（图片/视频）"
 OPENAI_API_MODE = "OpenAI兼容接口（备用）"
-API_MODES = [SEEDANCE_API_MODE, AI_WORKSHOP_API_MODE, OPENAI_API_MODE]
+API_MODES = [OPENAI_API_MODE, SEEDANCE_API_MODE, AI_WORKSHOP_API_MODE]
 LEGACY_UI_VALUES = {"展开", "收起", "提交当前工作流", "打开 Seedance 注册页面"}
 API_KEY_PATTERN = re.compile(r"\bsk-[A-Za-z0-9_-]{16,}\b")
 

@@ -63,3 +63,16 @@
 - 已在 2026-08-12 将 OpenAI 兼容端点的连接超时从 60 秒提高到 180 秒
 - 如仍超时，检查网络稳定性或进一步降低首帧图分辨率/文件大小
 - 避免同时发送过多参考图
+
+## 9. "贞贞平价小屋" 重新出现在 API 模式下拉框
+
+**原因**：浏览器/ComfyUI 前端缓存了旧的节点定义，或工作流保存了旧 schema 的 `widgets_values`，导致 `api_mode` 显示成旧选项。
+
+**解决**：
+1. 已在 2026-08-12 将 `API_MODES` 顺序改为 `[OpenAI兼容接口, 贞贞平价小屋, AI工坊]`，让默认/首位显示 OpenAI 兼容。
+2. 清空工作流中 enhancer 节点的 `widgets_values`。
+3. 在 `minimax_h3_prompt_enhancer.js` 末尾追加时间戳注释，强制浏览器重新加载前端脚本。
+4. 关闭所有 ComfyUI 标签页，清空浏览器缓存（尤其是 IndexedDB / Service Worker），再重新打开。
+5. 重新加载主用 ref5 工作流，检查 API 模式是否显示为 "OpenAI兼容接口（备用）"。
+
+**注意**：无论 UI 显示什么选项，`execute()` 内都会强制 `api_mode = OPENAI_API_MODE`，实际请求始终走 OpenAI 兼容接口。

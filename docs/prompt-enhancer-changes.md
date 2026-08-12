@@ -103,3 +103,9 @@ systemctl --user restart comfyui
 - 2026-08-12 新增 `OPENAI_COMPATIBLE_REQUEST_TIMEOUT = (180, 300)`。
 - OpenAI 兼容端点（内联 base64 图片）使用 180 秒连接超时，替代默认 60 秒。
 - Seedance 端点（单独上传媒体）保持 60 秒不变。
+
+### 10. API 模式下拉框顺序调整
+
+- 2026-08-12 将 `API_MODES` 顺序从 `[Seedance, AI工坊, OpenAI]` 改为 `[OpenAI, Seedance, AI工坊]`。
+- 目的是：当浏览器缓存或旧 `widgets_values` 导致错位时，默认显示 OpenAI 兼容接口而非 "贞贞平价小屋"。
+- `execute()` 内部仍强制使用 `OPENAI_API_MODE`，不受 UI 显示影响。
