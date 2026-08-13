@@ -5,93 +5,6 @@
   "last_link_id": 26,
   "nodes": [
     {
-      "id": 30,
-      "type": "LoadImage",
-      "pos": [
-        1853.416585827055,
-        216.6853723520895
-      ],
-      "size": [
-        375.87887504131913,
-        326
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 4,
-      "inputs": [
-        {
-          "localized_name": "图像",
-          "name": "image",
-          "type": "COMBO",
-          "widget": {
-            "name": "image"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "选择文件上传",
-          "name": "upload",
-          "type": "IMAGEUPLOAD",
-          "widget": {
-            "name": "upload"
-          },
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "localized_name": "图像",
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            24
-          ]
-        },
-        {
-          "localized_name": "遮罩",
-          "name": "MASK",
-          "type": "MASK",
-          "slot_index": 1,
-          "links": null
-        }
-      ],
-      "title": "Ref image 1: lin_card.png",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.30.1",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "4K_UPSCALE_SUPIR_00011_.png",
-        "image"
-      ]
-    },
-    {
-      "id": 37,
-      "type": "Note",
-      "pos": [
-        1852.9462833586658,
-        589.259830722465
-      ],
-      "size": [
-        374.24053157232356,
-        315.285187579143
-      ],
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "title": "分辨率示例（4080 SUPER 16GB pruned 安全区）",
-      "properties": {},
-      "widgets_values": [
-        "【MiniMax H3 ref5 多模式通用工作流 - 测试版】\n主用 pruned 模型 + RTX 4080 SUPER 16GB + --novram + sage-attention\n\n模式切换：改 Prompt Enhancer 的 task_type\n- T2VA：不连首帧/尾帧/参考图\n- I2VA：只连 first_frame\n- FL2VA：连 first_frame + last_frame\n- L2VA：只连 last_frame\n- Ref2VA：连 reference_images 0~4\n\n新增（2026-08-13）：\n- 节点 38 LoadVideo、节点 39 LoadAudio 已放在画布上\n- 需要时手动：LoadVideo → PromptEnhancer.reference_videos\n- 注意：AudioConditioning 的 ref_videos 槽类型为 IMAGE，\n  不能直接接 LoadVideo，需用图像/抽帧方式提供\n- 第 5 张参考图也连入 AudioConditioning\n- Decode 节点用 MiniMaxH3AVDecodeGPUWithUnload，novram_safe=True"
-      ],
-      "color": "#3f789e",
-      "bgcolor": "#1b2638"
-    },
-    {
       "id": 1,
       "type": "VAELoader",
       "pos": [
@@ -925,382 +838,6 @@
       }
     },
     {
-      "id": 31,
-      "type": "LoadImage",
-      "pos": [
-        1218.8327102075687,
-        210.19802793037664
-      ],
-      "size": [
-        313.82706445410395,
-        326
-      ],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [
-        {
-          "localized_name": "图像",
-          "name": "image",
-          "type": "COMBO",
-          "widget": {
-            "name": "image"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "选择文件上传",
-          "name": "upload",
-          "type": "IMAGEUPLOAD",
-          "widget": {
-            "name": "upload"
-          },
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "localized_name": "图像",
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            6
-          ]
-        },
-        {
-          "localized_name": "遮罩",
-          "name": "MASK",
-          "type": "MASK",
-          "slot_index": 1,
-          "links": null
-        }
-      ],
-      "title": "Ref image 2: jiang_card.png",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.30.1",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "REDZ_A_I2I_SUPIR_00040_.png",
-        "image"
-      ]
-    },
-    {
-      "id": 32,
-      "type": "LoadImage",
-      "pos": [
-        1539.3191657016423,
-        216.37494043087716
-      ],
-      "size": [
-        305.16038710188536,
-        326
-      ],
-      "flags": {},
-      "order": 8,
-      "mode": 0,
-      "inputs": [
-        {
-          "localized_name": "图像",
-          "name": "image",
-          "type": "COMBO",
-          "widget": {
-            "name": "image"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "选择文件上传",
-          "name": "upload",
-          "type": "IMAGEUPLOAD",
-          "widget": {
-            "name": "upload"
-          },
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "localized_name": "图像",
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            7
-          ]
-        },
-        {
-          "localized_name": "遮罩",
-          "name": "MASK",
-          "type": "MASK",
-          "slot_index": 1,
-          "links": null
-        }
-      ],
-      "title": "Ref image 3: classroom_card.png",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.30.1",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "Gemini_Generated_Image_wlaykcwlaykcwlay (1).png",
-        "image"
-      ]
-    },
-    {
-      "id": 33,
-      "type": "LoadImage",
-      "pos": [
-        1217.8742757046036,
-        577.4245184895261
-      ],
-      "size": [
-        311.9824184778656,
-        326
-      ],
-      "flags": {},
-      "order": 9,
-      "mode": 0,
-      "inputs": [
-        {
-          "localized_name": "图像",
-          "name": "image",
-          "type": "COMBO",
-          "widget": {
-            "name": "image"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "选择文件上传",
-          "name": "upload",
-          "type": "IMAGEUPLOAD",
-          "widget": {
-            "name": "upload"
-          },
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "localized_name": "图像",
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            8
-          ]
-        },
-        {
-          "localized_name": "遮罩",
-          "name": "MASK",
-          "type": "MASK",
-          "slot_index": 1,
-          "links": null
-        }
-      ],
-      "title": "Ref image 4: corridor_card.png",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.30.1",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "Gemini_Generated_Image_ezrjisezrjisezrj (1).png",
-        "image"
-      ]
-    },
-    {
-      "id": 34,
-      "type": "LoadImage",
-      "pos": [
-        1538.3262161376858,
-        582.0077378457152
-      ],
-      "size": [
-        303.0305585190456,
-        326
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "localized_name": "图像",
-          "name": "image",
-          "type": "COMBO",
-          "widget": {
-            "name": "image"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "选择文件上传",
-          "name": "upload",
-          "type": "IMAGEUPLOAD",
-          "widget": {
-            "name": "upload"
-          },
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "localized_name": "图像",
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            9,
-            37,
-            38
-          ]
-        },
-        {
-          "localized_name": "遮罩",
-          "name": "MASK",
-          "type": "MASK",
-          "slot_index": 1,
-          "links": null
-        }
-      ],
-      "title": "Ref image 5: ref_portrait_closeup.png",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.30.1",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "JH_H3_IMAGE_EDIT_SUPIR_00010_ (1).png",
-        "image"
-      ]
-    },
-    {
-      "id": 38,
-      "type": "LoadVideo",
-      "pos": [
-        1888.3262161376858,
-        582.0077378457152
-      ],
-      "size": [
-        315,
-        280
-      ],
-      "flags": {},
-      "order": 11,
-      "mode": 0,
-      "inputs": [
-        {
-          "localized_name": "文件",
-          "name": "file",
-          "type": "COMBO",
-          "widget": {
-            "name": "file"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "选择要上传的文件",
-          "name": "upload",
-          "type": "IMAGEUPLOAD",
-          "widget": {
-            "name": "upload"
-          },
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "localized_name": "视频",
-          "name": "VIDEO",
-          "type": "VIDEO",
-          "slot_index": 0,
-          "links": []
-        }
-      ],
-      "title": "参考视频（可选）",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.31.0",
-        "Node name for S&R": "LoadVideo",
-        "source": "upload",
-        "controls": true,
-        "muted": false
-      },
-      "widgets_values": [
-        "",
-        "image"
-      ]
-    },
-    {
-      "id": 39,
-      "type": "LoadAudio",
-      "pos": [
-        1888.3262161376858,
-        902.0077378457152
-      ],
-      "size": [
-        315,
-        136
-      ],
-      "flags": {},
-      "order": 12,
-      "mode": 0,
-      "inputs": [
-        {
-          "localized_name": "音频",
-          "name": "audio",
-          "type": "COMBO",
-          "widget": {
-            "name": "audio"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "音频UI",
-          "name": "audioUI",
-          "type": "AUDIO_UI",
-          "widget": {
-            "name": "audioUI"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "选择文件上传",
-          "name": "upload",
-          "type": "AUDIOUPLOAD",
-          "widget": {
-            "name": "upload"
-          },
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "localized_name": "音频",
-          "name": "AUDIO",
-          "type": "AUDIO",
-          "slot_index": 0,
-          "links": []
-        }
-      ],
-      "title": "参考音频（可选）",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.31.0",
-        "Node name for S&R": "LoadAudio",
-        "source": "upload"
-      },
-      "widgets_values": [
-        "",
-        null,
-        null
-      ]
-    },
-    {
       "id": 6,
       "type": "MiniMaxH3AudioConditioningT8",
       "pos": [
@@ -1367,7 +904,7 @@
           "name": "ref_images.ref_image_0",
           "shape": 7,
           "type": "IMAGE",
-          "link": 6
+          "link": 39
         },
         {
           "label": "ref_image_1",
@@ -1375,7 +912,7 @@
           "name": "ref_images.ref_image_1",
           "shape": 7,
           "type": "IMAGE",
-          "link": 7
+          "link": 40
         },
         {
           "label": "ref_image_2",
@@ -1383,7 +920,7 @@
           "name": "ref_images.ref_image_2",
           "shape": 7,
           "type": "IMAGE",
-          "link": 8
+          "link": 41
         },
         {
           "label": "ref_image_3",
@@ -1391,7 +928,7 @@
           "name": "ref_images.ref_image_3",
           "shape": 7,
           "type": "IMAGE",
-          "link": 9
+          "link": 42
         },
         {
           "label": "ref_image_4",
@@ -1431,7 +968,23 @@
           "name": "ref_audios.ref_audio_0",
           "shape": 7,
           "type": "AUDIO",
-          "link": null
+          "link": 44
+        },
+        {
+          "label": "ref_audio_1",
+          "localized_name": "ref_audios.ref_audio_1",
+          "name": "ref_audios.ref_audio_1",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 45
+        },
+        {
+          "label": "ref_audio_2",
+          "localized_name": "ref_audios.ref_audio_2",
+          "name": "ref_audios.ref_audio_2",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": 46
         },
         {
           "localized_name": "prompt",
@@ -1597,7 +1150,7 @@
         1152,
         640,
         56,
-        "auto",
+        "auto — 自动判断",
         "native",
         0.35,
         false,
@@ -1965,6 +1518,539 @@
       ],
       "color": "#432",
       "bgcolor": "#653"
+    },
+    {
+      "id": 38,
+      "type": "LoadVideo",
+      "pos": [
+        2216.1192247919544,
+        964.2170392779976
+      ],
+      "size": [
+        315,
+        280
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "文件",
+          "name": "file",
+          "type": "COMBO",
+          "widget": {
+            "name": "file"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "选择要上传的文件",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "视频",
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "slot_index": 0,
+          "links": []
+        }
+      ],
+      "title": "参考视频（可选）",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.31.0",
+        "Node name for S&R": "LoadVideo",
+        "source": "upload",
+        "controls": true,
+        "muted": false
+      },
+      "widgets_values": [
+        "",
+        "image"
+      ]
+    },
+    {
+      "id": 39,
+      "type": "LoadAudio",
+      "pos": [
+        1855.96278202768,
+        1019.974545137379
+      ],
+      "size": [
+        315,
+        136
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "音频",
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "音频UI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "选择文件上传",
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "音频",
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "slot_index": 0,
+          "links": [
+            44
+          ]
+        }
+      ],
+      "title": "Ref audio 1",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.31.0",
+        "Node name for S&R": "LoadAudio",
+        "source": "upload"
+      },
+      "widgets_values": [
+        "",
+        null,
+        null
+      ]
+    },
+    {
+      "id": 32,
+      "type": "LoadImage",
+      "pos": [
+        1540.5677516531293,
+        225.05555444804588
+      ],
+      "size": [
+        305.16038710188536,
+        326
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "图像",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "选择文件上传",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            41
+          ]
+        },
+        {
+          "localized_name": "遮罩",
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": null
+        }
+      ],
+      "title": "Ref image 3: classroom_card.png",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.1",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "Gemini_Generated_Image_wlaykcwlaykcwlay (1).png",
+        "image"
+      ]
+    },
+    {
+      "id": 31,
+      "type": "LoadImage",
+      "pos": [
+        1219.266373201635,
+        224.03704843818923
+      ],
+      "size": [
+        313.82706445410395,
+        326
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "图像",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "选择文件上传",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            40
+          ]
+        },
+        {
+          "localized_name": "遮罩",
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": null
+        }
+      ],
+      "title": "Ref image 2: jiang_card.png",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.1",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "REDZ_A_I2I_SUPIR_00040_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 33,
+      "type": "LoadImage",
+      "pos": [
+        1217.0463771253233,
+        593.3400620314326
+      ],
+      "size": [
+        311.9824184778656,
+        326
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "图像",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "选择文件上传",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            42
+          ]
+        },
+        {
+          "localized_name": "遮罩",
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": null
+        }
+      ],
+      "title": "Ref image 4: corridor_card.png",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.1",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "Gemini_Generated_Image_ezrjisezrjisezrj (1).png",
+        "image"
+      ]
+    },
+    {
+      "id": 30,
+      "type": "LoadImage",
+      "pos": [
+        1851.7475435233316,
+        221.40353177941498
+      ],
+      "size": [
+        375.87887504131913,
+        326
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "图像",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "选择文件上传",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            24,
+            39
+          ]
+        },
+        {
+          "localized_name": "遮罩",
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": null
+        }
+      ],
+      "title": "Ref image 1: lin_card.png",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.1",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "4K_UPSCALE_SUPIR_00011_.png",
+        "image"
+      ]
+    },
+    {
+      "id": 34,
+      "type": "LoadImage",
+      "pos": [
+        1536.9528794003688,
+        594.9792783520768
+      ],
+      "size": [
+        303.0305585190456,
+        326
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "图像",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "选择文件上传",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            37,
+            38
+          ]
+        },
+        {
+          "localized_name": "遮罩",
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": null
+        }
+      ],
+      "title": "Ref image 5: ref_portrait_closeup.png",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.1",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "JH_H3_IMAGE_EDIT_SUPIR_00010_ (1).png",
+        "image"
+      ]
+    },
+    {
+      "id": 37,
+      "type": "Note",
+      "pos": [
+        1851.6714381368292,
+        601.245763014131
+      ],
+      "size": [
+        374.24053157232356,
+        315.285187579143
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "分辨率示例（4080 SUPER 16GB pruned 安全区）",
+      "properties": {},
+      "widgets_values": [
+        "【MiniMax H3 ref5 多模式通用工作流 - 测试版】\n主用 pruned 模型 + RTX 4080 SUPER 16GB + --novram + sage-attention\n\n模式切换：改 Prompt Enhancer 的 task_type\n- T2VA：不连首帧/尾帧/参考图\n- I2VA：只连 first_frame\n- FL2VA：连 first_frame + last_frame\n- L2VA：只连 last_frame\n- Ref2VA：连 reference_images 0~4\n\n新增（2026-08-13）：\n- 节点 38 LoadVideo、节点 39 LoadAudio 已放在画布上\n- 需要时手动：LoadVideo → PromptEnhancer.reference_videos\n- 注意：AudioConditioning 的 ref_videos 槽类型为 IMAGE，\n  不能直接接 LoadVideo，需用图像/抽帧方式提供\n- 第 5 张参考图也连入 AudioConditioning\n- Decode 节点用 MiniMaxH3AVDecodeGPUWithUnload，novram_safe=True"
+      ],
+      "color": "#3f789e",
+      "bgcolor": "#1b2638"
+    },
+    {
+      "id": 40,
+      "type": "LoadAudio",
+      "pos": [
+        2216,
+        1020
+      ],
+      "size": {
+        "0": 320,
+        "1": 90
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            45
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Ref audio 2",
+      "properties": {},
+      "widgets_values": [
+        "",
+        null,
+        null
+      ],
+      "shape": 1
+    },
+    {
+      "id": 41,
+      "type": "LoadAudio",
+      "pos": [
+        2576,
+        1020
+      ],
+      "size": {
+        "0": 320,
+        "1": 90
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            46
+          ],
+          "slot_index": 0
+        }
+      ],
+      "title": "Ref audio 3",
+      "properties": {},
+      "widgets_values": [
+        "",
+        null,
+        null
+      ],
+      "shape": 1
     }
   ],
   "links": [
@@ -1999,38 +2085,6 @@
       6,
       2,
       "VAE"
-    ],
-    [
-      6,
-      31,
-      0,
-      6,
-      7,
-      "IMAGE"
-    ],
-    [
-      7,
-      32,
-      0,
-      6,
-      8,
-      "IMAGE"
-    ],
-    [
-      8,
-      33,
-      0,
-      6,
-      9,
-      "IMAGE"
-    ],
-    [
-      9,
-      34,
-      0,
-      6,
-      10,
-      "IMAGE"
     ],
     [
       10,
@@ -2157,7 +2211,7 @@
       35,
       0,
       6,
-      16,
+      18,
       null
     ],
     [
@@ -2237,17 +2291,71 @@
       34,
       0,
       6,
-      6
+      6,
+      null
+    ],
+    [
+      39,
+      30,
+      0,
+      6,
+      7,
+      null
+    ],
+    [
+      40,
+      31,
+      0,
+      6,
+      8,
+      null
+    ],
+    [
+      41,
+      32,
+      0,
+      6,
+      9,
+      null
+    ],
+    [
+      42,
+      33,
+      0,
+      6,
+      10,
+      null
+    ],
+    [
+      44,
+      39,
+      0,
+      6,
+      15
+    ],
+    [
+      45,
+      40,
+      0,
+      6,
+      16
+    ],
+    [
+      46,
+      41,
+      0,
+      6,
+      17
     ]
   ],
   "groups": [],
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.2764835164835437,
+      "scale": 0.7925958339181648,
       "offset": [
-        -1981.1623829442067,
-        -118.41287417440807
+        -813.2518341644727,
+        166.67079707589767
       ]
     }
   },
