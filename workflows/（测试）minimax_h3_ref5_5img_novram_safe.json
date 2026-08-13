@@ -1,7 +1,7 @@
 {
   "id": "bb88aee7-e5c6-43ca-9d18-ab5a5390ed37",
   "revision": 0,
-  "last_node_id": 37,
+  "last_node_id": 39,
   "last_link_id": 26,
   "nodes": [
     {
@@ -285,7 +285,7 @@
         "Node name for S&R": "RandomNoise"
       },
       "widgets_values": [
-        832798531745203,
+        278525030019937,
         "randomize"
       ]
     },
@@ -355,7 +355,7 @@
         96.8470338096298
       ],
       "flags": {},
-      "order": 11,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
@@ -415,7 +415,7 @@
         193.096036950111
       ],
       "flags": {},
-      "order": 16,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
@@ -496,7 +496,7 @@
         194.1562918988227
       ],
       "flags": {},
-      "order": 15,
+      "order": 17,
       "mode": 0,
       "inputs": [
         {
@@ -566,7 +566,7 @@
         196.07896564095068
       ],
       "flags": {},
-      "order": 14,
+      "order": 16,
       "mode": 0,
       "inputs": [
         {
@@ -611,7 +611,7 @@
         219.11464057284735
       ],
       "flags": {},
-      "order": 13,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -712,305 +712,6 @@
       ]
     },
     {
-      "id": 6,
-      "type": "MiniMaxH3AudioConditioningT8",
-      "pos": [
-        2240.8867513424375,
-        242.81074648605028
-      ],
-      "size": [
-        419.9272140864682,
-        657.4502386221568
-      ],
-      "flags": {},
-      "order": 12,
-      "mode": 0,
-      "inputs": [
-        {
-          "localized_name": "clip",
-          "name": "clip",
-          "type": "CLIP",
-          "link": 2
-        },
-        {
-          "localized_name": "video_vae",
-          "name": "video_vae",
-          "type": "VAE",
-          "link": 3
-        },
-        {
-          "localized_name": "audio_vae",
-          "name": "audio_vae",
-          "type": "VAE",
-          "link": 4
-        },
-        {
-          "localized_name": "drive_audio",
-          "name": "drive_audio",
-          "shape": 7,
-          "type": "AUDIO",
-          "link": null
-        },
-        {
-          "localized_name": "final_audio",
-          "name": "final_audio",
-          "shape": 7,
-          "type": "AUDIO",
-          "link": null
-        },
-        {
-          "localized_name": "first_frame",
-          "name": "first_frame",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": 24
-        },
-        {
-          "localized_name": "last_frame",
-          "name": "last_frame",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": null
-        },
-        {
-          "label": "ref_image_0",
-          "localized_name": "ref_images.ref_image_0",
-          "name": "ref_images.ref_image_0",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": 6
-        },
-        {
-          "label": "ref_image_1",
-          "localized_name": "ref_images.ref_image_1",
-          "name": "ref_images.ref_image_1",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": 7
-        },
-        {
-          "label": "ref_image_2",
-          "localized_name": "ref_images.ref_image_2",
-          "name": "ref_images.ref_image_2",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": 8
-        },
-        {
-          "label": "ref_image_3",
-          "localized_name": "ref_images.ref_image_3",
-          "name": "ref_images.ref_image_3",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": 9
-        },
-        {
-          "label": "ref_image_4",
-          "localized_name": "ref_images.ref_image_4",
-          "name": "ref_images.ref_image_4",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": 37
-        },
-        {
-          "label": "ref_video_0",
-          "localized_name": "ref_videos.ref_video_0",
-          "name": "ref_videos.ref_video_0",
-          "shape": 7,
-          "type": "IMAGE",
-          "link": null
-        },
-        {
-          "label": "ref_video_audio_0",
-          "localized_name": "ref_video_audios.ref_video_audio_0",
-          "name": "ref_video_audios.ref_video_audio_0",
-          "shape": 7,
-          "type": "AUDIO",
-          "link": null
-        },
-        {
-          "label": "ref_audio_0",
-          "localized_name": "ref_audios.ref_audio_0",
-          "name": "ref_audios.ref_audio_0",
-          "shape": 7,
-          "type": "AUDIO",
-          "link": null
-        },
-        {
-          "localized_name": "prompt",
-          "name": "prompt",
-          "type": "STRING",
-          "widget": {
-            "name": "prompt"
-          },
-          "link": 25
-        },
-        {
-          "localized_name": "width",
-          "name": "width",
-          "type": "INT",
-          "widget": {
-            "name": "width"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "height",
-          "name": "height",
-          "type": "INT",
-          "widget": {
-            "name": "height"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "length",
-          "name": "length",
-          "type": "INT",
-          "widget": {
-            "name": "length"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "task_type",
-          "name": "task_type",
-          "type": "COMBO",
-          "widget": {
-            "name": "task_type"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "audio_mode",
-          "name": "audio_mode",
-          "type": "COMBO",
-          "widget": {
-            "name": "audio_mode"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "audio_denoise_strength",
-          "name": "audio_denoise_strength",
-          "type": "FLOAT",
-          "widget": {
-            "name": "audio_denoise_strength"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "add_source_as_reference",
-          "name": "add_source_as_reference",
-          "type": "BOOLEAN",
-          "widget": {
-            "name": "add_source_as_reference"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "prompt_primary_audio_ordinal",
-          "name": "prompt_primary_audio_ordinal",
-          "type": "INT",
-          "widget": {
-            "name": "prompt_primary_audio_ordinal"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "strict_prompt_tags",
-          "name": "strict_prompt_tags",
-          "type": "BOOLEAN",
-          "widget": {
-            "name": "strict_prompt_tags"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "ref_image_size",
-          "name": "ref_image_size",
-          "type": "COMBO",
-          "widget": {
-            "name": "ref_image_size"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "reference_video_policy",
-          "name": "reference_video_policy",
-          "type": "COMBO",
-          "widget": {
-            "name": "reference_video_policy"
-          },
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "localized_name": "positive",
-          "name": "positive",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": null
-        },
-        {
-          "localized_name": "av_latent",
-          "name": "av_latent",
-          "type": "LATENT",
-          "slot_index": 1,
-          "links": null
-        },
-        {
-          "localized_name": "mux_audio",
-          "name": "mux_audio",
-          "type": "AUDIO",
-          "slot_index": 2,
-          "links": null
-        },
-        {
-          "localized_name": "conditioned_prompt",
-          "name": "conditioned_prompt",
-          "type": "STRING",
-          "slot_index": 3,
-          "links": null
-        },
-        {
-          "localized_name": "media_map_json",
-          "name": "media_map_json",
-          "type": "STRING",
-          "slot_index": 4,
-          "links": null
-        },
-        {
-          "localized_name": "report",
-          "name": "report",
-          "type": "STRING",
-          "slot_index": 5,
-          "links": null
-        }
-      ],
-      "title": "H3 Conditioning (Ref2VA(5 ref))",
-      "properties": {
-        "aux_id": "T8mars/comfyui-minimax-h3-audio-T8",
-        "ver": "5ff46c253192e9d8cae185280fd34f4b4add063b",
-        "Node name for S&R": "MiniMaxH3AudioConditioningT8"
-      },
-      "widgets_values": [
-        "",
-        1152,
-        640,
-        56,
-        "auto",
-        "native",
-        0.35,
-        false,
-        0,
-        false,
-        "match",
-        "official_2_to_15s"
-      ]
-    },
-    {
       "id": 36,
       "type": "ShowText|pysssss",
       "pos": [
@@ -1022,7 +723,7 @@
         858.2023057607547
       ],
       "flags": {},
-      "order": 19,
+      "order": 21,
       "mode": 0,
       "inputs": [
         {
@@ -1046,9 +747,7 @@
         "ver": "1.0.0",
         "Node name for S&R": "ShowText|pysssss"
       },
-      "widgets_values": [
-        "subject_definitions:\n<Subject 1>: The young woman visible in <Picture 1>, a slim East Asian woman with fair skin and shoulder-length wavy black hair, here restyled into a fashionable evening look with a fitted dark blazer, silk top, and small crossbody bag, while her face and hair shape remain the reference. She is the woman being cornered in the alley and her vocal role is (S3). <Picture 1> serves as her keyframe anchor.\n<Subject 2>: The first thug visible in <Picture 2>, an East Asian man with his dark hair tied up in twisted dreads, a thin mustache, and dense colorful traditional tattoos covering both arms, here wearing a wrinkled, untucked white shirt and dark cargo pants for a scruffy look. His vocal role is (S2). <Picture 2> serves as his keyframe anchor.\n<Subject 3>: The second thug visible in <Picture 3>, an East Asian man with shoulder-length messy black hair, a scruffy beard, and a visible red scar on the left side of his neck, here wearing a stained, sweat-darkened white t-shirt and loose trousers for an unkempt, threatening look. His vocal role is (S1). <Picture 3> serves as his keyframe anchor.\n\nsummary:\n[keyframe completion, video editing, reference generation] A 9-second night-alley intimidation scene built from three character references: two scruffy male thugs corner a fashionable young woman in a dim alley and verbally threaten her for unpaid money, ending with her trembling plea for more time. The camera slowly orbits the trio in a continuous medium shot, preserving each character's facial identity, hairstyle, and key visual traits while applying the dark, gritty styling of the requested scenario.\n\nretention_analysis:\n<Subject 1>: fully_preserved\n<Subject 2>: fully_preserved\n<Subject 3>: fully_preserved\n<Picture 1>: fully_preserved\n<Picture 2>: fully_preserved\n<Picture 3>: fully_preserved\n\ndetailed_description:\nA cinematic, low-key night scene in a narrow back alley, lit by a single warm sodium streetlamp and a cooler blue rim from a distant flickering sign, casting long wet-wall shadows on cracked concrete. The framing holds a medium three-shot while the camera slowly orbits clockwise around the characters throughout the sequence, never breaking contact with the confrontation.\n\n[Shot 1] The scene opens in the dim alley. <Subject 3> steps forward from the left, his stained white t-shirt rumpled, his scarred neck catching the lamplight as he leans in toward <Subject 1>, who has been backed against a graffiti-marked brick wall, clutching her small crossbody bag with both hands. <Subject 2> stands a half-step behind <Subject 3>, arms loosely folded, his tattooed forearms exposed, watching the woman with cold intent. A faint mist drifts across the wet pavement and a distant neon sign flickers dull red on the wall. The camera begins a slow, continuous clockwise orbit, holding medium framing on the trio at chest height. <Subject 3> (S1) glares at <Subject 1> and says in a hoarse, threatening voice, <d>[Chinese] 钱呢？什么时候还？</d> <Subject 1>'s eyes widen, her shoulders pull up, and she begins to tremble, her knuckles whitening on the strap of her bag.\n\n[Shot 2] At 03:00.000, the orbit continues without a cut. The camera now passes around the woman's right side, so the background shifts from the graffiti-streaked wall to a stack of rusted metal barrels and a tipped-over trash bin catching the lamplight. <Subject 2> (S2) steps forward to shoulder-to-shoulder with <Subject 3>, leaning into <Subject 1>'s space and lowering his voice. He says in a slow, vicious rasp, <d>[Chinese] 你想找死么？</d> <Subject 1> flinches, pressing her back harder against the bricks, her hands shaking visibly in front of her chest. A bead of sweat traces down her temple, catching the warm light.\n\n[Shot 3] At 06:00.000, the camera completes roughly three-quarters of its orbit and tightens slightly into a medium close-up on <Subject 1>, with <Subject 2> and <Subject 3> now framed behind her shoulders as looming silhouettes against the alley wall. <Subject 1> (S3) shivers, her lips quivering, and pleads in a frightened, breaking voice, <d>[Chinese] 大哥宽限几天吧……</d> Her breath catches at the end of the sentence. <Subject 3> says nothing, only tilts his head, the scar on his neck catching a brief glint of light. <Subject 2> narrows his eyes and takes a half-step closer, his shadow falling across the woman, as the scene holds on her terrified face.\n\noverall_soundscape:\nA quiet urban night with distant traffic hum and a low electrical buzz from the flickering sign. Wet footsteps shift on damp concrete, fabric rustles as the men lean in, and the woman's quick shallow breaths and small choked gasps are audible over the stillness. A short metallic scrape comes from the alley wall as she presses back against the brick.\n\nnon_diegetic_music:\nN/A"
-      ],
+      "widgets_values": [],
       "color": "#432",
       "bgcolor": "#653"
     },
@@ -1064,7 +763,7 @@
         737.6965980147222
       ],
       "flags": {},
-      "order": 17,
+      "order": 19,
       "mode": 0,
       "inputs": [
         {
@@ -1415,6 +1114,499 @@
       ]
     },
     {
+      "id": 34,
+      "type": "LoadImage",
+      "pos": [
+        1538.3262161376858,
+        582.0077378457152
+      ],
+      "size": [
+        303.0305585190456,
+        326
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "图像",
+          "name": "image",
+          "type": "COMBO",
+          "widget": {
+            "name": "image"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "选择文件上传",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "图像",
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            9,
+            37
+          ]
+        },
+        {
+          "localized_name": "遮罩",
+          "name": "MASK",
+          "type": "MASK",
+          "slot_index": 1,
+          "links": null
+        }
+      ],
+      "title": "Ref image 5: ref_portrait_closeup.png",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.30.1",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "JH_H3_IMAGE_EDIT_SUPIR_00010_ (1).png",
+        "image"
+      ]
+    },
+    {
+      "id": 38,
+      "type": "LoadVideo",
+      "pos": [
+        1888.3262161376858,
+        582.0077378457152
+      ],
+      "size": [
+        315,
+        280
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "文件",
+          "name": "file",
+          "type": "COMBO",
+          "widget": {
+            "name": "file"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "选择要上传的文件",
+          "name": "upload",
+          "type": "IMAGEUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "视频",
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "slot_index": 0,
+          "links": []
+        }
+      ],
+      "title": "参考视频（可选）",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.31.0",
+        "Node name for S&R": "LoadVideo",
+        "source": "upload",
+        "controls": true,
+        "muted": false
+      },
+      "widgets_values": [
+        "",
+        "image"
+      ]
+    },
+    {
+      "id": 39,
+      "type": "LoadAudio",
+      "pos": [
+        1888.3262161376858,
+        902.0077378457152
+      ],
+      "size": [
+        315,
+        136
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "音频",
+          "name": "audio",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "音频UI",
+          "name": "audioUI",
+          "type": "AUDIO_UI",
+          "widget": {
+            "name": "audioUI"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "选择文件上传",
+          "name": "upload",
+          "type": "AUDIOUPLOAD",
+          "widget": {
+            "name": "upload"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "音频",
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "slot_index": 0,
+          "links": []
+        }
+      ],
+      "title": "参考音频（可选）",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.31.0",
+        "Node name for S&R": "LoadAudio",
+        "source": "upload"
+      },
+      "widgets_values": [
+        "",
+        null,
+        null
+      ]
+    },
+    {
+      "id": 6,
+      "type": "MiniMaxH3AudioConditioningT8",
+      "pos": [
+        2240.8867513424375,
+        242.81074648605028
+      ],
+      "size": [
+        419.9272140864682,
+        672
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "localized_name": "clip",
+          "name": "clip",
+          "type": "CLIP",
+          "link": 2
+        },
+        {
+          "localized_name": "video_vae",
+          "name": "video_vae",
+          "type": "VAE",
+          "link": 3
+        },
+        {
+          "localized_name": "audio_vae",
+          "name": "audio_vae",
+          "type": "VAE",
+          "link": 4
+        },
+        {
+          "localized_name": "drive_audio",
+          "name": "drive_audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "localized_name": "final_audio",
+          "name": "final_audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "localized_name": "first_frame",
+          "name": "first_frame",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 24
+        },
+        {
+          "localized_name": "last_frame",
+          "name": "last_frame",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "ref_image_0",
+          "localized_name": "ref_images.ref_image_0",
+          "name": "ref_images.ref_image_0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 6
+        },
+        {
+          "label": "ref_image_1",
+          "localized_name": "ref_images.ref_image_1",
+          "name": "ref_images.ref_image_1",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 7
+        },
+        {
+          "label": "ref_image_2",
+          "localized_name": "ref_images.ref_image_2",
+          "name": "ref_images.ref_image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 8
+        },
+        {
+          "label": "ref_image_3",
+          "localized_name": "ref_images.ref_image_3",
+          "name": "ref_images.ref_image_3",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "label": "ref_image_4",
+          "localized_name": "ref_images.ref_image_4",
+          "name": "ref_images.ref_image_4",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 37
+        },
+        {
+          "label": "ref_image_5",
+          "localized_name": "ref_images.ref_image_5",
+          "name": "ref_images.ref_image_5",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "ref_video_0",
+          "localized_name": "ref_videos.ref_video_0",
+          "name": "ref_videos.ref_video_0",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": null
+        },
+        {
+          "label": "ref_video_audio_0",
+          "localized_name": "ref_video_audios.ref_video_audio_0",
+          "name": "ref_video_audios.ref_video_audio_0",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "label": "ref_audio_0",
+          "localized_name": "ref_audios.ref_audio_0",
+          "name": "ref_audios.ref_audio_0",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "localized_name": "prompt",
+          "name": "prompt",
+          "type": "STRING",
+          "widget": {
+            "name": "prompt"
+          },
+          "link": 25
+        },
+        {
+          "localized_name": "width",
+          "name": "width",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "height",
+          "name": "height",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "length",
+          "name": "length",
+          "type": "INT",
+          "widget": {
+            "name": "length"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "task_type",
+          "name": "task_type",
+          "type": "COMBO",
+          "widget": {
+            "name": "task_type"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "audio_mode",
+          "name": "audio_mode",
+          "type": "COMBO",
+          "widget": {
+            "name": "audio_mode"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "audio_denoise_strength",
+          "name": "audio_denoise_strength",
+          "type": "FLOAT",
+          "widget": {
+            "name": "audio_denoise_strength"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "add_source_as_reference",
+          "name": "add_source_as_reference",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "add_source_as_reference"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "prompt_primary_audio_ordinal",
+          "name": "prompt_primary_audio_ordinal",
+          "type": "INT",
+          "widget": {
+            "name": "prompt_primary_audio_ordinal"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "strict_prompt_tags",
+          "name": "strict_prompt_tags",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "strict_prompt_tags"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "ref_image_size",
+          "name": "ref_image_size",
+          "type": "COMBO",
+          "widget": {
+            "name": "ref_image_size"
+          },
+          "link": null
+        },
+        {
+          "localized_name": "reference_video_policy",
+          "name": "reference_video_policy",
+          "type": "COMBO",
+          "widget": {
+            "name": "reference_video_policy"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "localized_name": "positive",
+          "name": "positive",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": null
+        },
+        {
+          "localized_name": "av_latent",
+          "name": "av_latent",
+          "type": "LATENT",
+          "slot_index": 1,
+          "links": null
+        },
+        {
+          "localized_name": "mux_audio",
+          "name": "mux_audio",
+          "type": "AUDIO",
+          "slot_index": 2,
+          "links": null
+        },
+        {
+          "localized_name": "conditioned_prompt",
+          "name": "conditioned_prompt",
+          "type": "STRING",
+          "slot_index": 3,
+          "links": null
+        },
+        {
+          "localized_name": "media_map_json",
+          "name": "media_map_json",
+          "type": "STRING",
+          "slot_index": 4,
+          "links": null
+        },
+        {
+          "localized_name": "report",
+          "name": "report",
+          "type": "STRING",
+          "slot_index": 5,
+          "links": null
+        }
+      ],
+      "title": "H3 Conditioning (Ref2VA(5 ref))",
+      "properties": {
+        "aux_id": "T8mars/comfyui-minimax-h3-audio-T8",
+        "ver": "5ff46c253192e9d8cae185280fd34f4b4add063b",
+        "Node name for S&R": "MiniMaxH3AudioConditioningT8"
+      },
+      "widgets_values": [
+        "",
+        1152,
+        640,
+        56,
+        "auto",
+        "native",
+        0.35,
+        false,
+        0,
+        false,
+        "match",
+        "official_2_to_15s"
+      ]
+    },
+    {
       "id": 35,
       "type": "MiniMaxH3PromptEnhancerT8",
       "pos": [
@@ -1426,7 +1618,7 @@
         864
       ],
       "flags": {},
-      "order": 18,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
@@ -1744,7 +1936,7 @@
         "Node name for S&R": "MiniMaxH3PromptEnhancerT8"
       },
       "widgets_values": [
-        "黑夜，小巷内，两个男人穿着邋遢，正在威胁一位打扮时髦的女士。镜头中景环绕拍摄。\n两个男人用不同声音狠毒的说两句台词，可以自由分配，\n角色1：钱呢？什么时候还？\n角色2：你想找死么？\n之后 女角色，惊恐的瑟瑟发抖，同时嘴里惊恐的说：“大哥宽限几天吧……”",
+        "黑夜，小巷内，两个男人穿着邋遢，女士推开身前的男人拼命向前跑，同时，身后的两个男人一前一后追逐女人。\n角色1：站住！你给我站住！\n角色2：别跑！\n之后 女角色，歇斯底里的大喊：“救命啊！！！”",
         "Ref2VA（参考图/视频生音视频）",
         9,
         "AUTO（系统自动判断）",
@@ -1764,7 +1956,7 @@
         "",
         "",
         "",
-        851291630412341,
+        348142177492211,
         "randomize",
         true,
         false,
@@ -1772,134 +1964,6 @@
       ],
       "color": "#432",
       "bgcolor": "#653"
-    },
-    {
-      "id": 34,
-      "type": "LoadImage",
-      "pos": [
-        1538.3262161376858,
-        582.0077378457152
-      ],
-      "size": [
-        303.0305585190456,
-        326
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [
-        {
-          "localized_name": "图像",
-          "name": "image",
-          "type": "COMBO",
-          "widget": {
-            "name": "image"
-          },
-          "link": null
-        },
-        {
-          "localized_name": "选择文件上传",
-          "name": "upload",
-          "type": "IMAGEUPLOAD",
-          "widget": {
-            "name": "upload"
-          },
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "localized_name": "图像",
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            9,
-            37
-          ]
-        },
-        {
-          "localized_name": "遮罩",
-          "name": "MASK",
-          "type": "MASK",
-          "slot_index": 1,
-          "links": null
-        }
-      ],
-      "title": "Ref image 5: ref_portrait_closeup.png",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.30.1",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "JH_H3_IMAGE_EDIT_SUPIR_00010_ (1).png",
-        "image"
-      ]
-    },
-    {
-      "id": 38,
-      "type": "LoadVideo",
-      "pos": [
-        1888.3262161376858,
-        582.0077378457152
-      ],
-      "size": [
-        315,
-        280
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "VIDEO",
-          "type": "VIDEO",
-          "links": [],
-          "slot_index": 0
-        }
-      ],
-      "title": "参考视频（可选）",
-      "widgets_values": [
-        ""
-      ],
-      "properties": {
-        "source": "upload",
-        "controls": true,
-        "muted": false
-      }
-    },
-    {
-      "id": 39,
-      "type": "LoadAudio",
-      "pos": [
-        1888.3262161376858,
-        902.0077378457152
-      ],
-      "size": [
-        315,
-        120
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "AUDIO",
-          "type": "AUDIO",
-          "links": [],
-          "slot_index": 0
-        }
-      ],
-      "title": "参考音频（可选）",
-      "widgets_values": [
-        ""
-      ],
-      "properties": {
-        "source": "upload"
-      }
     }
   ],
   "links": [
@@ -2092,7 +2156,7 @@
       35,
       0,
       6,
-      15,
+      16,
       null
     ],
     [
@@ -2172,10 +2236,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.8718554173099808,
+      "scale": 1.2764835164835437,
       "offset": [
-        -309.58379156422956,
-        -1.2829396275660174
+        -1981.1623829442067,
+        -118.41287417440807
       ]
     }
   },
