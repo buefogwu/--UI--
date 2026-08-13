@@ -996,16 +996,16 @@
         "Node name for S&R": "MiniMaxH3AudioConditioningT8"
       },
       "widgets_values": [
-        "[由上方 Prompt Enhancer 生成，请勿在此编辑]",
+        "",
         1152,
         640,
-        209,
-        "auto — 自动判断",
+        56,
+        "auto",
         "native",
-        1,
+        0.35,
         false,
         0,
-        true,
+        false,
         "match",
         "official_2_to_15s"
       ]
