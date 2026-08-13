@@ -11,19 +11,17 @@ else
     MSG="$1"
 fi
 
-mkdir -p "$REPO_DIR/workflows" "$REPO_DIR/custom_nodes/comfyui-minimax-h3-prompt-enhancer-T8"
+mkdir -p "$REPO_DIR/workflows" "$REPO_DIR/custom_nodes/comfyui-minimax-h3-prompt-enhancer-T8" "$REPO_DIR/custom_nodes/comfyui-minimax-h3-audio-T8"
 
-cp "$COMFY_DIR/custom_nodes/comfyui-minimax-h3-prompt-enhancer-T8/nodes.py" \
-   "$REPO_DIR/custom_nodes/comfyui-minimax-h3-prompt-enhancer-T8/"
+cp "$COMFY_DIR/custom_nodes/comfyui-minimax-h3-prompt-enhancer-T8/nodes.py"    "$REPO_DIR/custom_nodes/comfyui-minimax-h3-prompt-enhancer-T8/"
 
-cp "$COMFY_DIR/user/default/workflows/（主用）minimax_h3_ref5_5img_ui_enhancer.json" \
-   "$REPO_DIR/workflows/"
+cp "$COMFY_DIR/custom_nodes/comfyui-minimax-h3-audio-T8/nodes.py"    "$REPO_DIR/custom_nodes/comfyui-minimax-h3-audio-T8/"
 
-cp "$COMFY_DIR/user/default/workflows/minimax_h3_turbo_4080_8step_enhancer.json" \
-   "$REPO_DIR/workflows/" 2>/dev/null || true
+cp "$COMFY_DIR/user/default/workflows/（主用）minimax_h3_ref5_5img_ui_enhancer.json"    "$REPO_DIR/workflows/"
 
-cp "$COMFY_DIR/user/default/workflows/（测试）minimax_h3_ref5_5img_novram_safe.json" \
-   "$REPO_DIR/workflows/"
+cp "$COMFY_DIR/user/default/workflows/minimax_h3_turbo_4080_8step_enhancer.json"    "$REPO_DIR/workflows/" 2>/dev/null || true
+
+cp "$COMFY_DIR/user/default/workflows/（测试）minimax_h3_ref5_5img_novram_safe.json"    "$REPO_DIR/workflows/"
 
 cd "$REPO_DIR"
 git add -A
