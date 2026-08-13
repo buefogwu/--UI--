@@ -22,6 +22,9 @@ cp "$COMFY_DIR/user/default/workflows/（主用）minimax_h3_ref5_5img_ui_enhanc
 cp "$COMFY_DIR/user/default/workflows/minimax_h3_turbo_4080_8step_enhancer.json" \
    "$REPO_DIR/workflows/" 2>/dev/null || true
 
+cp "$COMFY_DIR/user/default/workflows/（测试）minimax_h3_ref5_5img_novram_safe.json" \
+   "$REPO_DIR/workflows/"
+
 cd "$REPO_DIR"
 git add -A
 git commit -m "$MSG" || echo "Nothing to commit"
