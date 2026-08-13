@@ -1155,7 +1155,8 @@
           "slot_index": 0,
           "links": [
             9,
-            37
+            37,
+            38
           ]
         },
         {
@@ -1358,7 +1359,7 @@
           "name": "last_frame",
           "shape": 7,
           "type": "IMAGE",
-          "link": null
+          "link": 38
         },
         {
           "label": "ref_image_0",
@@ -2230,6 +2231,13 @@
       6,
       11,
       "IMAGE"
+    ],
+    [
+      38,
+      34,
+      0,
+      6,
+      6
     ]
   ],
   "groups": [],
