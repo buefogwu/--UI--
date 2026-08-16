@@ -1,0 +1,358 @@
+{
+  "9001": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "redzit2_2026HD_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    },
+    "_meta": {
+      "title": "UNET redzit2 INT8",
+      "pos": [
+        -151.15461992298265,
+        -6161.441995573853
+      ],
+      "size": [
+        320,
+        82
+      ]
+    }
+  },
+  "9002": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen_3_4b.safetensors",
+      "type": "lumina2",
+      "device": "default"
+    },
+    "_meta": {
+      "title": "CLIP qwen_3_4b",
+      "pos": [
+        -143.0376108455066,
+        -5805.668746881607
+      ],
+      "size": [
+        320,
+        106
+      ]
+    }
+  },
+  "9003": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "_meta": {
+      "title": "VAE ae(Flux)",
+      "pos": [
+        195.86261113129365,
+        -5971.864056337853
+      ],
+      "size": [
+        320,
+        82
+      ]
+    }
+  },
+  "216": {
+    "class_type": "CR SDXL Aspect Ratio",
+    "inputs": {
+      "width": 1280,
+      "height": 720,
+      "aspect_ratio": "custom",
+      "swap_dimensions": "Off",
+      "upscale_factor": 1,
+      "batch_size": 1
+    },
+    "_meta": {
+      "title": "CR SDXL Aspect Ratio",
+      "pos": [
+        199.28488580981806,
+        -5647.985462026042
+      ],
+      "size": [
+        274.9105615395815,
+        300.7736902345141
+      ]
+    }
+  },
+  "544": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "__POSITIVE_PROMPT__",
+      "clip": [
+        "9002",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "主提示",
+      "pos": [
+        206.4340386948138,
+        -6015.856008721173
+      ],
+      "size": [
+        318.60946280991743,
+        116.08282644628105
+      ]
+    }
+  },
+  "545": {
+    "class_type": "CLIPTextEncode",
+    "inputs": {
+      "text": "",
+      "clip": [
+        "9002",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "副提示",
+      "pos": [
+        212.4353080010937,
+        -5845.439369584183
+      ],
+      "size": [
+        306.8907385923437,
+        105.94790078187452
+      ]
+    }
+  },
+  "541": {
+    "class_type": "ConditioningSetTimestepRange",
+    "inputs": {
+      "conditioning": [
+        "544",
+        0
+      ],
+      "start": 0.001,
+      "end": 1.0
+    },
+    "_meta": {
+      "title": "主要提示参与控制",
+      "pos": [
+        542.0584775127406,
+        -6011.983467472987
+      ],
+      "size": [
+        210,
+        82
+      ]
+    }
+  },
+  "543": {
+    "class_type": "ConditioningSetTimestepRange",
+    "inputs": {
+      "conditioning": [
+        "545",
+        0
+      ],
+      "start": 0.0,
+      "end": 0.1
+    },
+    "_meta": {
+      "title": "辅助提示参与控制",
+      "pos": [
+        543.1580728395622,
+        -5877.66175876525
+      ],
+      "size": [
+        210,
+        82
+      ]
+    }
+  },
+  "540": {
+    "class_type": "ConditioningCombine",
+    "inputs": {
+      "conditioning_1": [
+        "541",
+        0
+      ],
+      "conditioning_2": [
+        "543",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "ConditioningCombine",
+      "pos": [
+        777.5349165961358,
+        -6006.764385699886
+      ],
+      "size": [
+        140,
+        46
+      ]
+    }
+  },
+  "542": {
+    "class_type": "ConditioningZeroOut",
+    "inputs": {
+      "conditioning": [
+        "544",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "ConditioningZeroOut",
+      "pos": [
+        545.8927679024334,
+        -5760.131809655671
+      ],
+      "size": [
+        140,
+        26
+      ]
+    }
+  },
+  "141": {
+    "class_type": "KSampler",
+    "inputs": {
+      "model": [
+        "9001",
+        0
+      ],
+      "positive": [
+        "540",
+        0
+      ],
+      "negative": [
+        "542",
+        0
+      ],
+      "latent_image": [
+        "216",
+        4
+      ],
+      "seed": 0,
+      "steps": 20,
+      "cfg": 1.0,
+      "sampler_name": "euler_ancestral",
+      "scheduler": "sgm_uniform",
+      "denoise": 1.0
+    },
+    "_meta": {
+      "title": "KSampler",
+      "pos": [
+        659.0207586363067,
+        -5657.446657699038
+      ],
+      "size": [
+        261.7571706193803,
+        313.59747370253353
+      ]
+    }
+  },
+  "148": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "141",
+        0
+      ],
+      "vae": [
+        "9003",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "VAEDecode",
+      "pos": [
+        504.59370795058436,
+        -5656.292193518673
+      ],
+      "size": [
+        140,
+        46
+      ]
+    }
+  },
+  "10020": {
+    "class_type": "UpscaleModelLoader",
+    "inputs": {
+      "model_name": "4xNomos2_hq_dat2.safetensors"
+    },
+    "_meta": {
+      "title": "超分模型(TXT,下拉切ESRGAN/Nomos2)",
+      "pos": [
+        2242.761122593494,
+        -6097.193134699302
+      ],
+      "size": [
+        340,
+        82
+      ]
+    }
+  },
+  "10021": {
+    "class_type": "ImageUpscaleWithModelNovramSafe",
+    "inputs": {
+      "image": [
+        "148",
+        0
+      ],
+      "upscale_model": [
+        "10020",
+        0
+      ],
+      "novram_safe": true,
+      "tile_size": 512
+    },
+    "_meta": {
+      "title": "⚡ 像素放大4x (novram_safe)",
+      "pos": [
+        2242.761122593494,
+        -5977.193134699302
+      ],
+      "size": [
+        340,
+        110
+      ]
+    }
+  },
+  "10022": {
+    "class_type": "ImageScale",
+    "inputs": {
+      "image": [
+        "10021",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "width": 1920,
+      "height": 1080,
+      "crop": "disabled"
+    },
+    "_meta": {
+      "title": "⚡ 缩到 4K (像素路)",
+      "pos": [
+        2242.761122593494,
+        -5837.193134699304
+      ],
+      "size": [
+        340,
+        130
+      ]
+    }
+  },
+  "10012": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "10022",
+        0
+      ],
+      "filename_prefix": "RHTV_img"
+    },
+    "_meta": {
+      "title": "保存4K 像素路(TXT)",
+      "pos": [
+        2602.7611225934947,
+        -6097.193134699302
+      ],
+      "size": [
+        330,
+        280
+      ]
+    }
+  }
+}

@@ -50,11 +50,50 @@ MAX_RESOLUTION = 16384
 
 
 def _filter_inputs_for_task(task_type, first_frame, last_frame, ref_images, ref_videos, ref_video_audios, ref_audios):
-    """Drop media inputs that are irrelevant for the resolved H3 task type."""
+    """Drop or promote media inputs so one workflow template works for every H3 task type."""
+    requested = (task_type or "auto").lower()
+
+    # Explicit modes: ignore unrelated media (e.g. I2VA does not care about last_frame/ref images).
+    if requested == "t2va":
+        return None, None, None, None, None, None
+    if requested == "i2va":
+        return first_frame, None, None, None, None, None
+    if requested == "l2va":
+        return None, last_frame, None, None, None, None
+    if requested == "fl2va":
+        return first_frame, last_frame, None, None, None, None
+
     ref_image_values = sorted_autogrow_values(ref_images) if ref_images else []
     ref_video_entries = sorted_autogrow_items(ref_videos) if ref_videos else []
     ref_audio_values = sorted_autogrow_values(ref_audios) if ref_audios else []
     has_refs = bool(ref_image_values or ref_video_entries or ref_audio_values)
+
+    if requested == "ref2va":
+        # Promote any connected first/last frames to reference images so a universal
+        # template can switch to Ref2VA without rewiring.
+        if first_frame is not None or last_frame is not None:
+            promoted = dict(ref_images) if ref_images else {}
+            existing_ordinals = []
+            for key in promoted.keys():
+                try:
+                    existing_ordinals.append(int(str(key).rsplit("_", 1)[-1]))
+                except ValueError:
+                    pass
+            next_idx = max(existing_ordinals, default=-1) + 1
+            if first_frame is not None:
+                promoted[f"ref_image_{next_idx}"] = first_frame
+                next_idx += 1
+            if last_frame is not None:
+                promoted[f"ref_image_{next_idx}"] = last_frame
+            ref_images = promoted
+            ref_image_values = sorted_autogrow_values(ref_images)
+            has_refs = bool(ref_image_values or ref_video_entries or ref_audio_values)
+        # Suppress keyframes so build_conditioning uses the reference path, not hybrid.
+        first_frame = last_frame = None
+        resolved = resolve_task_type(task_type, first_frame, last_frame, has_refs).lower()
+        return first_frame, last_frame, ref_images, ref_videos, ref_video_audios, ref_audios
+
+    # Auto / Hybrid: let resolve_task_type infer the actual mode from connected inputs.
     resolved = resolve_task_type(task_type, first_frame, last_frame, has_refs).lower()
 
     if resolved == "t2va":
@@ -65,7 +104,7 @@ def _filter_inputs_for_task(task_type, first_frame, last_frame, ref_images, ref_
         return None, last_frame, None, None, None, None
     if resolved == "fl2va":
         return first_frame, last_frame, None, None, None, None
-    # Ref2VA / Hybrid keep all connected inputs (Ref2VA may promote first/last to refs in build_conditioning)
+    # Ref2VA / Hybrid keep all connected inputs.
     return first_frame, last_frame, ref_images, ref_videos, ref_video_audios, ref_audios
 
 

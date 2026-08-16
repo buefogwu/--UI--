@@ -1,0 +1,60 @@
+{
+  "10": {
+    "class_type": "MiniMaxH3PromptEnhancerT8",
+    "inputs": {
+      "prompt": "__ZH_PROMPT__",
+      "task_type": "Ref2VA（参考图/视频生音视频）",
+      "duration_seconds": 3,
+      "shot_count": "1",
+      "rewrite_mode": "balanced",
+      "description_word_target": 0,
+      "output_language": "English",
+      "prompt_mode": "官方增强",
+      "official_skill_profile": "官方 Skill 严格（全英文协议）",
+      "creative_preset": "无（仅核心规则）",
+      "case_template": "无（不使用 T8 案例）",
+      "api_mode": "OpenAI兼容接口（备用）",
+      "ai_workshop_model": "gemini-3.5-flash",
+      "constraints": "This is a Ref2VA single-shot reference-generation request with exactly two attached images.\n- <Picture 1> (the first image) is the ENVIRONMENT / scene asset. <Picture 2> (the second image) is the CHARACTER shot still.\n- In subject_definitions: define <Subject 1> = the environment shown in <Picture 1>, and <Subject 2> = the character shown in <Picture 2>. Do NOT define any <Subject N> for N >= 3 and do NOT cite <Picture N> for N >= 3 anywhere in the output.\n- In retention_analysis: mark both <Subject 1> and <Subject 2> as fully_preserved.\n- In detailed_description: place <Subject 2> (the character) inside <Subject 1> (the environment), and keep <Subject 1>'s environment consistent throughout the shot. Use exactly one shot, labelled [Shot 1]; do NOT add [Shot 2] or any later shot.\n- Keep the six fields in the fixed order: subject_definitions, summary, retention_analysis, detailed_description, overall_soundscape, non_diegetic_music. Output ONLY these six fields, no Markdown fence, no preface, no explanation, no suffix.\n- Faithfully carry over the shot type, camera movement, emotion/action, and any dialogue from the input text; keep character names exactly as given; do not invent new characters or events.",
+      "use_background_music": false,
+      "use_ambient_noise": true,
+      "enabled": true,
+      "custom_model": "",
+      "api_key": "",
+      "openai_base_url": "",
+      "seed": 0,
+      "reference_images.reference_image_0": ["30", 0],
+      "reference_images.reference_image_1": ["31", 0]
+    },
+    "_meta": {
+      "title": "H3 Prompt Enhancer (Ref2VA six-section schema; ref0=scene env=Picture1, ref1=shot still=Picture2)"
+    }
+  },
+  "12": {
+    "class_type": "ShowText|pysssss",
+    "inputs": {
+      "text": ["10", 0]
+    },
+    "_meta": {
+      "title": "Show schema (raw Enhancer output, NO Still-tag cleaning)"
+    }
+  },
+  "30": {
+    "inputs": {
+      "image": "__SCENE_IMAGE__"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Reference image 0 = scene ENVIRONMENT asset -> <Picture 1> -> <Subject 1> (environment, fully_preserved)"
+    }
+  },
+  "31": {
+    "inputs": {
+      "image": "__REF_IMAGE__"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Reference image 1 = shot still (character) -> <Picture 2> -> <Subject 2> (identity, fully_preserved)"
+    }
+  }
+}
