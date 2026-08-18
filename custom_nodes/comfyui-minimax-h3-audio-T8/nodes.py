@@ -1,12 +1,48 @@
 from __future__ import annotations
 
 from comfy_api.latest import ComfyExtension, io
+from .nodes_activation_chunk_advanced import ACTIVATION_CHUNK_ADVANCED_NODE_CLASSES
+from .nodes_av_decode_safety_advanced import AV_DECODE_SAFETY_ADVANCED_NODE_CLASSES
+from .nodes_context_ir_advanced import CONTEXT_IR_ADVANCED_NODE_CLASSES
+from .nodes_qwen_prefix_cache_advanced import (
+    QWEN_PREFIX_CACHE_ADVANCED_NODE_CLASSES,
+)
+from .nodes_repair_execution_advanced import (
+    REPAIR_EXECUTION_ADVANCED_NODE_CLASSES,
+)
+from .nodes_reel_delivery_advanced import (
+    REEL_DELIVERY_ADVANCED_NODE_CLASSES,
+)
+from .nodes_scheduled_audio_injection_advanced import (
+    SCHEDULED_AUDIO_INJECTION_ADVANCED_NODE_CLASSES,
+)
+from .nodes_studio_advanced import STUDIO_ADVANCED_NODE_CLASSES
+from .nodes_trajectory_probe_advanced import (
+    TRAJECTORY_PROBE_ADVANCED_NODE_CLASSES,
+)
+from .nodes_motion_quality_advanced import MOTION_QUALITY_ADVANCED_NODE_CLASSES
+from .nodes_latent_upscale import LATENT_UPSCALE_NODE_CLASSES
 
 from .audio_ops import decode_av_latent, inject_audio_latent, mix_audio, trim_av_output
 from .conditioning import build_conditioning, resolve_task_type
 from .core import sorted_autogrow_items, sorted_autogrow_values
 from .nodes_dialogue_audio_exp import DIALOGUE_AUDIO_NODE_CLASSES
+from .nodes_environment_audit_advanced import ENVIRONMENT_AUDIT_ADVANCED_NODE_CLASSES
+from .nodes_face_refine_advanced import FACE_REFINE_ADVANCED_NODE_CLASSES
+from .nodes_face_refine_parity_advanced import FACE_REFINE_PARITY_ADVANCED_NODE_CLASSES
+from .nodes_multiface_refine_advanced import MULTIFACE_REFINE_ADVANCED_NODE_CLASSES
+from .nodes_dynamic_guidance_advanced import DYNAMIC_GUIDANCE_ADVANCED_NODE_CLASSES
+from .nodes_detail_sampling_advanced import DETAIL_SAMPLING_ADVANCED_NODE_CLASSES
+from .nodes_speed_advanced import SPEED_ADVANCED_NODE_CLASSES
+from .nodes_hybrid_compatibility_advanced import (
+    HYBRID_COMPATIBILITY_ADVANCED_NODE_CLASSES,
+)
+from .nodes_hybrid_model_advanced import (
+    HYBRID_MODEL_ADVANCED_NODE_CLASSES,
+    HYBRID_MODEL_MAINTENANCE_ADVANCED_NODE_CLASSES,
+)
 from .nodes_multirate_exp import MiniMaxH3MultiRateSamplerEXPT8
+from .nodes_multikeyframe_advanced import MULTIKEYFRAME_ADVANCED_NODE_CLASSES
 from .nodes_long_video_exp import (
     MiniMaxH3LongVideoConditioningT8,
     MiniMaxH3LongVideoContextLoadT8,
@@ -31,6 +67,7 @@ from .nodes_still_exp import (
 from .nodes_speech_exp import SPEECH_NODE_CLASSES
 from .nodes_source_av_exp import SOURCE_AV_NODE_CLASSES
 from .nodes_visual_reference_exp import MiniMaxH3VisualReferenceStrengthEXPT8
+from .nodes_vram_policy_advanced import VRAM_POLICY_ADVANCED_NODE_CLASSES
 from .preflight import run_preflight
 from .prompt_tags import prepare_prompt
 from .sampling import (
@@ -45,8 +82,6 @@ from .timing import make_timing_plan, window_audio
 
 CATEGORY = "T8/MiniMax H3/Audio"
 MAX_RESOLUTION = 16384
-
-
 
 
 def _filter_inputs_for_task(task_type, first_frame, last_frame, ref_images, ref_videos, ref_video_audios, ref_audios):
@@ -452,7 +487,30 @@ class MiniMaxH3AudioT8Extension(ComfyExtension):
                 MiniMaxH3VisualReferenceStrengthEXPT8,
                 *SPEECH_NODE_CLASSES[10:],
                 *SOURCE_AV_NODE_CLASSES,
-                *DIALOGUE_AUDIO_NODE_CLASSES]
+                *DIALOGUE_AUDIO_NODE_CLASSES,
+                *MULTIKEYFRAME_ADVANCED_NODE_CLASSES,
+                *HYBRID_MODEL_ADVANCED_NODE_CLASSES,
+                *VRAM_POLICY_ADVANCED_NODE_CLASSES,
+                *HYBRID_MODEL_MAINTENANCE_ADVANCED_NODE_CLASSES,
+                *HYBRID_COMPATIBILITY_ADVANCED_NODE_CLASSES,
+                *ENVIRONMENT_AUDIT_ADVANCED_NODE_CLASSES,
+                *ACTIVATION_CHUNK_ADVANCED_NODE_CLASSES,
+                *QWEN_PREFIX_CACHE_ADVANCED_NODE_CLASSES,
+                *STUDIO_ADVANCED_NODE_CLASSES,
+                *REPAIR_EXECUTION_ADVANCED_NODE_CLASSES,
+                *SCHEDULED_AUDIO_INJECTION_ADVANCED_NODE_CLASSES,
+                *AV_DECODE_SAFETY_ADVANCED_NODE_CLASSES,
+                *CONTEXT_IR_ADVANCED_NODE_CLASSES,
+                *REEL_DELIVERY_ADVANCED_NODE_CLASSES,
+                *TRAJECTORY_PROBE_ADVANCED_NODE_CLASSES,
+                *MOTION_QUALITY_ADVANCED_NODE_CLASSES,
+                *FACE_REFINE_ADVANCED_NODE_CLASSES,
+                *LATENT_UPSCALE_NODE_CLASSES,
+                *FACE_REFINE_PARITY_ADVANCED_NODE_CLASSES,
+                *MULTIFACE_REFINE_ADVANCED_NODE_CLASSES,
+                *DYNAMIC_GUIDANCE_ADVANCED_NODE_CLASSES,
+                *DETAIL_SAMPLING_ADVANCED_NODE_CLASSES,
+                *SPEED_ADVANCED_NODE_CLASSES]
 
 
 def comfy_entrypoint():
